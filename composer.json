@@ -12,9 +12,16 @@
         "squizlabs/php_codesniffer": "^3.5"
     },
     "autoload": {
-      "psr-4": {
-        "Hexlet\\PHPStanFp\\": "src/",
-        "Hexlet\\PHPStanFp\\Tests\\": "tests/"
-      }
+        "psr-4": {
+          "Hexlet\\PHPStanFp\\": "src/",
+          "Hexlet\\PHPStanFp\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        }
     }
 }
