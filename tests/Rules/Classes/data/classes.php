@@ -19,6 +19,8 @@ function example()
 {
     // do not cause an error
     $someVar = 'class';
+
+    $anonymous = new class {};
 }
 
 // do not cause an error

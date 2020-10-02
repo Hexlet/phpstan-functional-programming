@@ -5,7 +5,10 @@ parameters:
     - tests
 
   excludes_analyse:
-    - tests/**/data/*
+    - tests/*/data/*
 
   checkGenericClassInNonGenericObjectType: false
   reportUnmatchedIgnoredErrors: false
+
+  ignoreErrors:
+    - '#Call to an undefined method PhpParser\\Node#'

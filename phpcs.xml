@@ -8,7 +8,7 @@
     <arg value="np"/>
 
     <exclude-pattern>vendor/*</exclude-pattern>
-    <exclude-pattern>tests/**/data/*</exclude-pattern>
+    <exclude-pattern>tests/*/data/*</exclude-pattern>
 
     <rule ref="PSR12" />
 </ruleset>
