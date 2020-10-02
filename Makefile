@@ -1,9 +1,12 @@
+install:
+	composer install
+
 test:
-	composer exec phpunit -- -v tests
+	composer exec -v phpunit tests
 
 lint:
-	composer exec phpcs -- --standard=PSR12 -v src tests
-	composer exec --verbose phpstan -- --level=8 analyse src tests
+	composer exec -v phpcs src tests
+	composer exec -v phpstan -- analyse -c phpstan.neon
 
 lint-fix:
 	composer exec phpcbf -- --standard=PSR12 -v src tests
