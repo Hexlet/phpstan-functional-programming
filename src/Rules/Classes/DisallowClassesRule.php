@@ -9,17 +9,11 @@ use PhpParser\Node\Stmt\ClassLike;
 
 class DisallowClassesRule implements Rule
 {
-    /**
-     * @var array<string>
-     */
-    private $allowedClasses;
+    private bool $disallowClasses;
 
-    /**
-     * @param array<string> $allowedClasses
-     */
-    public function __construct(array $allowedClasses)
+    public function __construct(bool $disallowClasses)
     {
-        $this->allowedClasses = $allowedClasses;
+        $this->disallowClasses = $disallowClasses;
     }
 
     public function getNodeType(): string
@@ -29,25 +23,7 @@ class DisallowClassesRule implements Rule
     
     public function processNode(Node $node, Scope $scope): array
     {
-        if (in_array('all', $this->allowedClasses)) {
-            return [];
-        }
-
-        if ($node->isAbstract()) {
-            if (in_array('abstract', $this->allowedClasses)) {
-                return [];
-            }
-            return ['Should not use abstract classes'];
-        }
-        
-        if ($node->isFinal()) {
-            if (in_array('final', $this->allowedClasses)) {
-                return [];
-            }
-            return ['Should not use final classes'];
-        }
-        
-        if (in_array('classes', $this->allowedClasses)) {
+        if (!$this->disallowClasses) {
             return [];
         }
         return ['Should not use classes'];

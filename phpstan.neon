@@ -9,6 +9,3 @@ parameters:
 
   checkGenericClassInNonGenericObjectType: false
   reportUnmatchedIgnoredErrors: false
-
-  ignoreErrors:
-    - '#Call to an undefined method PhpParser\\Node#'

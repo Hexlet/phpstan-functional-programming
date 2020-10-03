@@ -1,11 +1,11 @@
 parametersSchema:
   phpstanFunctionalProgramming: structure([
-    allowedClasses: arrayOf(string())
+    disallowClasses: bool()
   ])
 
 parameters:
   phpstanFunctionalProgramming:
-    allowedClasses: []
+    disallowClasses: true
 
 services:
   -
@@ -13,4 +13,4 @@ services:
     tags:
       - phpstan.rules.rule
     arguments:
-      allowedClasses: %phpstanFunctionalProgramming.allowedClasses%
+      disallowClasses: %phpstanFunctionalProgramming.disallowClasses%

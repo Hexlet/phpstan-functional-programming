@@ -8,30 +8,27 @@ use Hexlet\PHPStanFp\Rules\Classes\DisallowClassesRule;
 
 class DisallowClassesRuleTest extends RuleTestCase
 {
-    /**
-     * @var array<string>
-     */
-    private $allowedClasses;
+    private bool $disallowClasses;
 
     protected function getRule(): Rule
     {
-        return new DisallowClassesRule($this->allowedClasses);
+        return new DisallowClassesRule($this->disallowClasses);
     }
 
-    public function testAllDisallowedClasses(): void
+    public function testWithEnabledRule(): void
     {
-        $this->allowedClasses = [];
+        $this->disallowClasses = true;
         $this->analyse([__DIR__ . '/data/classes.php'], [
             [
                 'Should not use classes',
                 3,
             ],
             [
-                'Should not use abstract classes',
+                'Should not use classes',
                 8,
             ],
             [
-                'Should not use final classes',
+                'Should not use classes',
                 13,
             ],
             [
@@ -41,77 +38,9 @@ class DisallowClassesRuleTest extends RuleTestCase
         ]);
     }
 
-    public function testAllAllowedClasses(): void
+    public function testWithDisabledRule(): void
     {
-        $this->allowedClasses = ['all'];
+        $this->disallowClasses = false;
         $this->analyse([__DIR__ . '/data/classes.php'], []);
-    }
-
-    public function testAllowedAbstractClasses(): void
-    {
-        $this->allowedClasses = ['abstract'];
-        $this->analyse([__DIR__ . '/data/classes.php'], [
-            [
-                'Should not use classes',
-                3,
-            ],
-            [
-                'Should not use final classes',
-                13,
-            ],
-            [
-                'Should not use classes',
-                23,
-            ],
-        ]);
-    }
-
-    public function testAllowedFinalClasses(): void
-    {
-        $this->allowedClasses = ['final'];
-        $this->analyse([__DIR__ . '/data/classes.php'], [
-            [
-                'Should not use classes',
-                3,
-            ],
-            [
-                'Should not use abstract classes',
-                8,
-            ],
-            [
-                'Should not use classes',
-                23,
-            ],
-        ]);
-    }
-
-    public function testAllowedClasses(): void
-    {
-        $this->allowedClasses = ['classes'];
-        $this->analyse([__DIR__ . '/data/classes.php'], [
-            [
-                'Should not use abstract classes',
-                8,
-            ],
-            [
-                'Should not use final classes',
-                13,
-            ],
-        ]);
-    }
-
-    public function testAllowedAbstractFinalClasses(): void
-    {
-        $this->allowedClasses = ['abstract', 'final'];
-        $this->analyse([__DIR__ . '/data/classes.php'], [
-            [
-                'Should not use classes',
-                3,
-            ],
-            [
-                'Should not use classes',
-                23,
-            ],
-        ]);
     }
 }
