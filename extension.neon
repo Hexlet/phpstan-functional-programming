@@ -1,2 +1,16 @@
-rules:
-  - Hexlet\PHPStanFp\Rules\Classes\DisallowClassesRule
+parametersSchema:
+  phpstanFunctionalProgramming: structure([
+    disallowClasses: bool()
+  ])
+
+parameters:
+  phpstanFunctionalProgramming:
+    disallowClasses: true
+
+services:
+  -
+    class: Hexlet\PHPStanFp\Rules\Classes\DisallowClassesRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowClasses: %phpstanFunctionalProgramming.disallowClasses%

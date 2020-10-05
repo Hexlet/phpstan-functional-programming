@@ -9,6 +9,13 @@ use PhpParser\Node\Stmt\ClassLike;
 
 class DisallowClassesRule implements Rule
 {
+    private bool $disallowClasses;
+
+    public function __construct(bool $disallowClasses)
+    {
+        $this->disallowClasses = $disallowClasses;
+    }
+
     public function getNodeType(): string
     {
         return ClassLike::class;
@@ -16,6 +23,9 @@ class DisallowClassesRule implements Rule
     
     public function processNode(Node $node, Scope $scope): array
     {
-        return ["Don't use any classes"];
+        if (!$this->disallowClasses) {
+            return [];
+        }
+        return ['Should not use classes'];
     }
 }

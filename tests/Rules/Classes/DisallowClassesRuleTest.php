@@ -8,26 +8,39 @@ use Hexlet\PHPStanFp\Rules\Classes\DisallowClassesRule;
 
 class DisallowClassesRuleTest extends RuleTestCase
 {
+    private bool $disallowClasses;
+
     protected function getRule(): Rule
     {
-        return new DisallowClassesRule();
+        return new DisallowClassesRule($this->disallowClasses);
     }
 
-    public function testRule(): void
+    public function testWithEnabledRule(): void
     {
+        $this->disallowClasses = true;
         $this->analyse([__DIR__ . '/data/classes.php'], [
             [
-                "Don't use any classes",
+                'Should not use classes',
                 3,
             ],
             [
-                "Don't use any classes",
+                'Should not use classes',
                 8,
             ],
             [
-                "Don't use any classes",
+                'Should not use classes',
                 13,
             ],
+            [
+                'Should not use classes',
+                23,
+            ],
         ]);
+    }
+
+    public function testWithDisabledRule(): void
+    {
+        $this->disallowClasses = false;
+        $this->analyse([__DIR__ . '/data/classes.php'], []);
     }
 }
