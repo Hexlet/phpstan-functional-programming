@@ -1,11 +1,13 @@
 parametersSchema:
   phpstanFunctionalProgramming: structure([
     disallowClasses: bool()
+    disallowLoops: bool()
   ])
 
 parameters:
   phpstanFunctionalProgramming:
     disallowClasses: true
+    disallowLoops: true
 
 services:
   -
@@ -14,3 +16,27 @@ services:
       - phpstan.rules.rule
     arguments:
       disallowClasses: %phpstanFunctionalProgramming.disallowClasses%
+  -
+    class: Hexlet\PHPStanFp\Rules\Loops\WhileRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
+  -
+    class: Hexlet\PHPStanFp\Rules\Loops\DoWhileRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
+  -
+    class: Hexlet\PHPStanFp\Rules\Loops\ForRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
+  -
+    class: Hexlet\PHPStanFp\Rules\Loops\ForeachRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
