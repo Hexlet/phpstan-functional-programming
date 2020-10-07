@@ -2,12 +2,14 @@ parametersSchema:
   phpstanFunctionalProgramming: structure([
     disallowClasses: bool()
     disallowLoops: bool()
+    disallowThrow: bool()
   ])
 
 parameters:
   phpstanFunctionalProgramming:
     disallowClasses: true
     disallowLoops: true
+    disallowThrow: true
 
 services:
   -
@@ -40,3 +42,9 @@ services:
       - phpstan.rules.rule
     arguments:
       disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
+  -
+    class: Hexlet\PHPStanFp\Rules\Exceptions\ThrowRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowThrow: %phpstanFunctionalProgramming.disallowThrow%
