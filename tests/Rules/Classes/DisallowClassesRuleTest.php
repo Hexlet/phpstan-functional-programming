@@ -25,15 +25,15 @@ class DisallowClassesRuleTest extends RuleTestCase
             ],
             [
                 'Should not use classes',
-                8,
+                20,
             ],
             [
                 'Should not use classes',
-                13,
+                25,
             ],
             [
                 'Should not use classes',
-                23,
+                38,
             ],
         ]);
     }
