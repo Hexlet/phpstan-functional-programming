@@ -43,7 +43,7 @@ services:
     arguments:
       disallowLoops: %phpstanFunctionalProgramming.disallowLoops%
   -
-    class: Hexlet\PHPStanFp\Rules\Exceptions\ThrowRule
+    class: Hexlet\PHPStanFp\Rules\Exceptions\DisallowThrowRule
     tags:
       - phpstan.rules.rule
     arguments:
