@@ -3,6 +3,7 @@ parametersSchema:
     disallowClasses: bool()
     disallowLoops: bool()
     disallowThrow: bool()
+    disallowUnusedExpression: bool()
   ])
 
 parameters:
@@ -10,6 +11,7 @@ parameters:
     disallowClasses: true
     disallowLoops: true
     disallowThrow: true
+    disallowUnusedExpression: true
 
 services:
   -
@@ -48,3 +50,9 @@ services:
       - phpstan.rules.rule
     arguments:
       disallowThrow: %phpstanFunctionalProgramming.disallowThrow%
+  -
+    class: Hexlet\PHPStanFp\Rules\Expression\DisallowUnusedExpressionRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowUnusedExpression: %phpstanFunctionalProgramming.disallowUnusedExpression%
