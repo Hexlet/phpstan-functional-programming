@@ -21,6 +21,11 @@ class DisallowThrowRule implements Rule
         return Throw_::class;
     }
     
+    /**
+     * @param \PhpParser\Node\Stmt\Throw_ $node
+     * @param \PHPStan\Analyser\Scope $scope
+     * @return string[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowThrow) {
