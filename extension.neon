@@ -4,6 +4,7 @@ parametersSchema:
     disallowLoops: bool()
     disallowThrow: bool()
     disallowUnusedExpression: bool()
+    disallowVariablesMutation: bool()
   ])
 
 parameters:
@@ -12,6 +13,7 @@ parameters:
     disallowLoops: true
     disallowThrow: true
     disallowUnusedExpression: true
+    disallowVariablesMutation: true
 
 services:
   -
@@ -56,3 +58,39 @@ services:
       - phpstan.rules.rule
     arguments:
       disallowUnusedExpression: %phpstanFunctionalProgramming.disallowUnusedExpression%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\AssignRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\AssignOpRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\PostIncRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\PostDecRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\PreIncRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Variables\PreDecRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
