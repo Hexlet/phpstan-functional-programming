@@ -34,3 +34,12 @@ $fn1 = function () use ($a) {
 $fn1 = function () use (&$a) {
     $a = 26;
 };
+
+// do not cause an error
+$arr = [1, 2, 3];
+
+$arr[1] = 5;
+
+$arr[] = 125;
+
+$arr = [5, 6, 7];

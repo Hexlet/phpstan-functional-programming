@@ -20,59 +20,59 @@ class AssignOpRuleTest extends RuleTestCase
         $this->disallowVariablesMutation = true;
         $this->analyse([__DIR__ . '/data/assignOp.php'], [
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 12,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 14,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 16,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 18,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 20,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 22,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 24,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 26,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 28,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 30,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 32,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 37,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 42,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 44,
             ],
         ]);
