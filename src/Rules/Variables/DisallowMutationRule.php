@@ -26,8 +26,18 @@ abstract class DisallowMutationRule implements Rule
             return [];
         }
 
-        if (isset($node->var) && $scope->hasVariableType($node->var->name)->yes()) {
-            return ['Forbid the use of mutating operators'];
+        if (!isset($node->var)) {
+            return [];
+        }
+
+        $errorMessage = 'Should not use of mutating operators';
+
+        if ($node->var->getType() === 'Expr_ArrayDimFetch') {
+            return [$errorMessage];
+        }
+
+        if ($scope->hasVariableType($node->var->name)->yes()) {
+            return [$errorMessage];
         }
 
         return [];

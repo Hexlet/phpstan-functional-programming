@@ -20,40 +20,52 @@ class AssignRuleTest extends RuleTestCase
         $this->disallowVariablesMutation = true;
         $this->analyse([__DIR__ . '/data/assign.php'], [
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 12,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 14,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 17,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 18,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 26,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 28,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 31,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 34,
             ],
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 35,
+            ],
+            [
+                'Should not use of mutating operators',
+                41,
+            ],
+            [
+                'Should not use of mutating operators',
+                43,
+            ],
+            [
+                'Should not use of mutating operators',
+                45,
             ],
         ]);
     }

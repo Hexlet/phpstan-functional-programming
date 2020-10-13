@@ -20,7 +20,7 @@ class PostIncRuleTest extends RuleTestCase
         $this->disallowVariablesMutation = true;
         $this->analyse([__DIR__ . '/data/incdec.php'], [
             [
-                'Forbid the use of mutating operators',
+                'Should not use of mutating operators',
                 6,
             ],
         ]);
