@@ -4,7 +4,8 @@
     "type": "library",
     "require": {
         "php": "^7.1",
-        "phpstan/phpstan": "^0.12.48"
+        "phpstan/phpstan": "^0.12.48",
+        "illuminate/collections": "^8.10"
     },
     "license": "MIT",
     "require-dev": {

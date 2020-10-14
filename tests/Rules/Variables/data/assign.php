@@ -43,3 +43,10 @@ $arr[1] = 5;
 $arr[] = 125;
 
 $arr = [5, 6, 7];
+
+// do not cause an error
+[$first, $second] = $arr;
+
+[$a] = $arr;
+
+[$newVar, $a] = [5, 6, 7];

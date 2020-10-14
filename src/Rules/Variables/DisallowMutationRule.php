@@ -32,14 +32,21 @@ abstract class DisallowMutationRule implements Rule
 
         $errorMessage = 'Should not use of mutating operators';
 
-        if ($node->var->getType() === 'Expr_ArrayDimFetch') {
-            return [$errorMessage];
-        }
+        switch ($node->var->getType()) {
+            case 'Expr_ArrayDimFetch':
+                return [$errorMessage];
 
-        if ($scope->hasVariableType($node->var->name)->yes()) {
-            return [$errorMessage];
-        }
+            case 'Expr_Array':
+                $containsTypedItems = collect($node->var->items)
+                    ->map(fn($item) => $item->value->name)
+                    ->contains(fn($name) => $scope->hasVariableType($name)->yes());
+                return $containsTypedItems ? [$errorMessage] : [];
 
-        return [];
+            case 'Expr_Variable':
+                return $scope->hasVariableType($node->var->name)->yes() ? [$errorMessage] : [];
+
+            default:
+                return [];
+        }
     }
 }
