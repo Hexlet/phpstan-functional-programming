@@ -20,7 +20,7 @@ class DisallowUnusedExpressionRule implements Rule
     {
         return Expression::class;
     }
-    
+
     /**
      * @param \PhpParser\Node\Stmt\Expression $node
      * @param \PHPStan\Analyser\Scope $scope

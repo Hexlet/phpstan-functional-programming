@@ -10,7 +10,7 @@ class ForeachRule extends DisallowLoopsRule
     {
         return Foreach_::class;
     }
-    
+
     protected function getLoopType(): string
     {
         return 'foreach';

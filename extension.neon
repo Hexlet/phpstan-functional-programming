@@ -5,6 +5,7 @@ parametersSchema:
     disallowThrow: bool()
     disallowUnusedExpression: bool()
     disallowVariablesMutation: bool()
+    disallowMutatingFunctions: bool()
   ])
 
 parameters:
@@ -14,6 +15,7 @@ parameters:
     disallowThrow: true
     disallowUnusedExpression: true
     disallowVariablesMutation: true
+    disallowMutatingFunctions: true
 
 services:
   -
@@ -94,3 +96,9 @@ services:
       - phpstan.rules.rule
     arguments:
       disallowVariablesMutation: %phpstanFunctionalProgramming.disallowVariablesMutation%
+  -
+    class: Hexlet\PHPStanFp\Rules\Functions\DisallowMutatingFunctionsRule
+    tags:
+      - phpstan.rules.rule
+    arguments:
+      disallowMutatingFunctions: %phpstanFunctionalProgramming.disallowMutatingFunctions%

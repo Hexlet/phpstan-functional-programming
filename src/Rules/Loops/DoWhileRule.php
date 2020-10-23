@@ -10,7 +10,7 @@ class DoWhileRule extends DisallowLoopsRule
     {
         return Do_::class;
     }
-    
+
     protected function getLoopType(): string
     {
         return 'do-while';
