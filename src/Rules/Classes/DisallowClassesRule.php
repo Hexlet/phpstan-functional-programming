@@ -20,7 +20,7 @@ class DisallowClassesRule implements Rule
     {
         return Class_::class;
     }
-    
+
     /**
      * @param \PhpParser\Node\Stmt\Class_ $node
      * @param \PHPStan\Analyser\Scope $scope

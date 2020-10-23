@@ -10,7 +10,7 @@ class WhileRule extends DisallowLoopsRule
     {
         return While_::class;
     }
-    
+
     protected function getLoopType(): string
     {
         return 'while';

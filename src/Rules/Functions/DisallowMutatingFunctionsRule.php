@@ -44,7 +44,7 @@ class DisallowMutatingFunctionsRule implements Rule
     {
         return FuncCall::class;
     }
-    
+
     /**
      * @param \PhpParser\Node\Expr\FuncCall $node
      * @param \PHPStan\Analyser\Scope $scope

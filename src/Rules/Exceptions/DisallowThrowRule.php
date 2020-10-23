@@ -20,7 +20,7 @@ class DisallowThrowRule implements Rule
     {
         return Throw_::class;
     }
-    
+
     /**
      * @param \PhpParser\Node\Stmt\Throw_ $node
      * @param \PHPStan\Analyser\Scope $scope

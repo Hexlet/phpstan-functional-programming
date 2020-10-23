@@ -10,7 +10,7 @@ class ForRule extends DisallowLoopsRule
     {
         return For_::class;
     }
-    
+
     protected function getLoopType(): string
     {
         return 'for';
