@@ -56,7 +56,7 @@ class DisallowMutatingFunctionsRule implements Rule
             return [];
         }
 
-        if (!$node->name instanceof \PhpParser\Node\Name\FullyQualified) {
+        if (!$node->name instanceof \PhpParser\Node\Name) {
             return [];
         }
 
