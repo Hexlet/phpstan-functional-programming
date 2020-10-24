@@ -29,12 +29,12 @@ includes:
 
 This package provides the following rules for use with *PHPStan*:
 
-* [`DisallowClassesRule`](docs/rules/DisallowClassesRule.md)
-* [`DisallowThrowRule`](docs/rules/DisallowThrowRule.md)
-* [`DisallowUnusedExpressionRule`](docs/rules/DisallowUnusedExpressionRule.md)
-* [`DisallowMutatingFunctionsRule`](docs/rules/DisallowMutatingFunctionsRule.md)
-* [`DisallowLoopsRule`](docs/rules/DisallowLoopsRule.md)
-* [`DisallowMutationRule`](docs/rules/DisallowMutationRule.md)
+* [`DisallowClassesRule`](docs/rules/DisallowClassesRule.md) - Forbid the use of `class`.
+* [`DisallowThrowRule`](docs/rules/DisallowThrowRule.md) - Forbid the use of `throw`.
+* [`DisallowUnusedExpressionRule`](docs/rules/DisallowUnusedExpressionRule.md) - Enforce that an expression gets used.
+* [`DisallowMutatingFunctionsRule`](docs/rules/DisallowMutatingFunctionsRule.md) - Forbid the use of mutating functions.
+* [`DisallowLoopsRule`](docs/rules/DisallowLoopsRule.md) - Forbid the use of loops.
+* [`DisallowMutationRule`](docs/rules/DisallowMutationRule.md) - Forbid the use of mutating operators.
 
 ## Disabling rules
 
