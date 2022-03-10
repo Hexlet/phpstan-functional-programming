@@ -9,7 +9,7 @@ $a = 1;
 do {
     echo $a;
     $a++;
-} while ($a > 0);
+} while ($a < 3);
 
 for ($i = 0; $i < 2; $i++) {
 
