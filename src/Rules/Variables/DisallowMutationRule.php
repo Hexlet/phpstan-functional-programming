@@ -39,6 +39,7 @@ abstract class DisallowMutationRule implements Rule
             case 'Expr_Array':
                 $containsTypedItems = collect($node->var->items)
                     ->map(fn($item) => $item->value->name)
+                    ->filter(fn($name) => !is_null($name))
                     ->contains(fn($name) => $scope->hasVariableType($name)->yes());
                 return $containsTypedItems ? [$errorMessage] : [];
 
