@@ -18,11 +18,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-      - name: Install
-        # Install project
-        run: make install
-      - name: Run linter
-        # Run Linter
-        run: make lint
-      - name: Run test
-        run: make test
+
+      - run: make install
+      - run: make lint
+      - run: make test
