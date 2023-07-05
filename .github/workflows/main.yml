@@ -1,4 +1,3 @@
-# Name of workflow
 name: PHP CI
 
 on:
