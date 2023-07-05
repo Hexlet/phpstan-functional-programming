@@ -3,9 +3,9 @@
     "description": "PHPStan rules for functional programming",
     "type": "library",
     "require": {
-        "php": ">=7.3",
-        "phpstan/phpstan": "^1.4.9",
-        "illuminate/collections": "^8.83.4"
+        "php": ">=8.1",
+        "phpstan/phpstan": "^1.10.24",
+        "illuminate/collections": "^10.14.1"
     },
     "license": "MIT",
     "autoload": {
