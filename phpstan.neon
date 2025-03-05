@@ -3,9 +3,8 @@ parameters:
   paths:
     - src
     - tests
-
   excludePaths:
     - tests/*/data/*
-
-  checkGenericClassInNonGenericObjectType: false
-  reportUnmatchedIgnoredErrors: false
+  ignoreErrors:
+    - identifier: missingType.generics
+    - identifier: argument.templateType

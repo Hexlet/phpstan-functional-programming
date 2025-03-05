@@ -5,7 +5,7 @@
     <arg name="basepath" value="."/>
     <arg name="colors"/>
     <arg name="parallel" value="100"/>
-    <arg value="np"/>
+    <arg value="n"/>
 
     <exclude-pattern>vendor/*</exclude-pattern>
     <exclude-pattern>tests/*/data/*</exclude-pattern>
