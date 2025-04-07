@@ -22,6 +22,11 @@ class DisallowClassesRule implements Rule
         return Class_::class;
     }
 
+    /**
+     * @param \PhpParser\Node\Stmt\Class_ $node
+     * @param \PHPStan\Analyser\Scope $scope
+     * @return \PHPStan\Rules\IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowClasses) {

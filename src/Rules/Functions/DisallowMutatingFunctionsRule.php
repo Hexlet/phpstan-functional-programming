@@ -46,6 +46,11 @@ class DisallowMutatingFunctionsRule implements Rule
         return FuncCall::class;
     }
 
+    /**
+     * @param \PhpParser\Node\Expr\FuncCall $node
+     * @param \PHPStan\Analyser\Scope $scope
+     * @return \PHPStan\Rules\IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowMutatingFunctions) {
@@ -65,7 +70,9 @@ class DisallowMutatingFunctionsRule implements Rule
         $errorMessage = "The use of function '{$name}' is not allowed as it might be a mutating function";
 
         return [
-            RuleErrorBuilder::message($errorMessage)->identifier('PHPStanFp.disallowMutatingFunctions')->build()
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('PHPStanFp.disallowMutatingFunctions')
+                ->build()
         ];
     }
 }

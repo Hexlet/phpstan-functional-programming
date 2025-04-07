@@ -25,7 +25,7 @@ class DisallowUnusedExpressionRule implements Rule
     /**
      * @param \PhpParser\Node\Stmt\Expression $node
      * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @return \PHPStan\Rules\IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -38,7 +38,9 @@ class DisallowUnusedExpressionRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Enforce that an expression gets used')->identifier('PHPStanFp.disallowUnusedExpression')->build()
+            RuleErrorBuilder::message('Enforce that an expression gets used')
+                ->identifier('PHPStanFp.disallowUnusedExpression')
+                ->build()
         ];
     }
 }
