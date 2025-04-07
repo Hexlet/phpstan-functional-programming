@@ -1,7 +1,6 @@
 {
     "name": "hexlet/phpstan-fp",
     "description": "PHPStan rules for functional programming",
-    "version": "v3.0.0",
     "type": "library",
     "require": {
         "php": ">=8.2",
