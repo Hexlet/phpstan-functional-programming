@@ -7,6 +7,7 @@ use PhpParser\Node\Stmt\Class_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowClassesRule implements Rule
 {
@@ -23,9 +24,9 @@ class DisallowClassesRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\Class_ $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return \PHPStan\Rules\IdentifierRuleError[]
+     * @param Class_ $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {

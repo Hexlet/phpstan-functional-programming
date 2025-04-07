@@ -7,6 +7,7 @@ use PhpParser\Node\Stmt\Expression;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowUnusedExpressionRule implements Rule
 {
@@ -23,9 +24,9 @@ class DisallowUnusedExpressionRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\Expression $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return \PHPStan\Rules\IdentifierRuleError[]
+     * @param Expression $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {

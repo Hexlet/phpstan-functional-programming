@@ -6,6 +6,7 @@ use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 abstract class DisallowLoopsRule implements Rule
 {
@@ -16,6 +17,11 @@ abstract class DisallowLoopsRule implements Rule
         $this->disallowLoops = $disallowLoops;
     }
 
+    /**
+     * @param Node $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowLoops) {

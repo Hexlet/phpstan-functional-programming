@@ -7,6 +7,7 @@ use PhpParser\Node\Expr\FuncCall;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowMutatingFunctionsRule implements Rule
 {
@@ -47,9 +48,9 @@ class DisallowMutatingFunctionsRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\FuncCall $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return \PHPStan\Rules\IdentifierRuleError[]
+     * @param FuncCall $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {

@@ -17,6 +17,11 @@ abstract class DisallowMutationRule implements Rule
         $this->disallowVariablesMutation = $disallowVariablesMutation;
     }
 
+    /**
+     * @param Node $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowVariablesMutation) {

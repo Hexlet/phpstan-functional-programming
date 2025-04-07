@@ -7,6 +7,7 @@ use PhpParser\Node\Expr\Throw_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowThrowRule implements Rule
 {
@@ -22,6 +23,11 @@ class DisallowThrowRule implements Rule
         return Throw_::class;
     }
 
+    /**
+     * @param Throw_ $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowThrow) {
@@ -31,7 +37,9 @@ class DisallowThrowRule implements Rule
         $errorMessage = 'Should not use throw';
 
         return [
-            RuleErrorBuilder::message($errorMessage)->identifier('PHPStanFp.disallowThrow')->build()
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('PHPStanFp.disallowThrow')
+                ->build()
         ];
     }
 }
