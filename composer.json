@@ -4,7 +4,7 @@
     "version": "3.0.0",
     "type": "library",
     "require": {
-        "php": ">=8.3",
+        "php": ">=8.2",
         "phpstan/phpstan": "^2.1",
         "illuminate/collections": "^12"
     },
