@@ -38,7 +38,7 @@ class DisallowThrowRule implements Rule
 
         return [
             RuleErrorBuilder::message($errorMessage)
-                ->identifier('PHPStanFp.disallowThrow')
+                ->identifier('phpstanFunctionalProgramming.disallowThrow')
                 ->build()
         ];
     }

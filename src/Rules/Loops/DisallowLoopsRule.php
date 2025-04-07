@@ -30,7 +30,7 @@ abstract class DisallowLoopsRule implements Rule
 
         return [
             RuleErrorBuilder::message("Should not use loop {$this->getLoopType()}")
-                ->identifier('PHPStanFp.disallowLoops')
+                ->identifier('phpstanFunctionalProgramming.disallowLoops')
                 ->build()
         ];
     }

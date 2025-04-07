@@ -72,7 +72,7 @@ class DisallowMutatingFunctionsRule implements Rule
 
         return [
             RuleErrorBuilder::message($errorMessage)
-                ->identifier('PHPStanFp.disallowMutatingFunctions')
+                ->identifier('phpstanFunctionalProgramming.disallowMutatingFunctions')
                 ->build()
         ];
     }

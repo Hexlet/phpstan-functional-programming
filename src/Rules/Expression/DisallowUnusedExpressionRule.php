@@ -40,7 +40,7 @@ class DisallowUnusedExpressionRule implements Rule
 
         return [
             RuleErrorBuilder::message('Enforce that an expression gets used')
-                ->identifier('PHPStanFp.disallowUnusedExpression')
+                ->identifier('phpstanFunctionalProgramming.disallowUnusedExpression')
                 ->build()
         ];
     }

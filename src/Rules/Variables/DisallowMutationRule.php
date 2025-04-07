@@ -60,7 +60,7 @@ abstract class DisallowMutationRule implements Rule
         $errorMessage = 'Should not use of mutating operators';
 
         return RuleErrorBuilder::message($errorMessage)
-            ->identifier('PHPStanFp.disallowVariablesMutation')
+            ->identifier('phpstanFunctionalProgramming.disallowVariablesMutation')
             ->build();
     }
 }

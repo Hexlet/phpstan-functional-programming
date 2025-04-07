@@ -38,7 +38,7 @@ class DisallowClassesRule implements Rule
 
         return [
             RuleErrorBuilder::message($errorMessage)
-                ->identifier('PHPStanFp.disallowClasses')
+                ->identifier('phpstanFunctionalProgramming.disallowClasses')
                 ->build()
         ];
     }
