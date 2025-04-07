@@ -5,6 +5,3 @@ parameters:
     - tests
   excludePaths:
     - tests/*/data/*
-  ignoreErrors:
-    - identifier: missingType.generics
-    - identifier: argument.templateType
