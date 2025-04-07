@@ -75,6 +75,10 @@ class AssignRuleTest extends RuleTestCase
                 'Should not use of mutating operators',
                 52,
             ],
+            [
+                'Should not use of mutating operators',
+                54,
+            ],
         ]);
     }
 

@@ -14,4 +14,10 @@ lint-fix:
 	composer exec -v phpcbf
 
 test-coverage:
-	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
+	XDEBUG_MODE=coverage composer exec --verbose phpunit tests -- --coverage-clover=build/logs/clover.xml
+
+test-coverage-text:
+	XDEBUG_MODE=coverage composer exec --verbose phpunit tests -- --coverage-text
+
+test-coverage-html:
+	XDEBUG_MODE=coverage composer exec --verbose phpunit tests -- --coverage-html=html-coverage
