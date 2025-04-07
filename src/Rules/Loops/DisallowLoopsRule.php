@@ -2,9 +2,10 @@
 
 namespace Hexlet\PHPStanFp\Rules\Loops;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 
 abstract class DisallowLoopsRule implements Rule
 {
@@ -21,7 +22,9 @@ abstract class DisallowLoopsRule implements Rule
             return [];
         }
 
-        return ["Should not use loop {$this->getLoopType()}"];
+        return [
+            RuleErrorBuilder::message("Should not use loop {$this->getLoopType()}")->build()
+        ];
     }
 
     abstract protected function getLoopType(): string;

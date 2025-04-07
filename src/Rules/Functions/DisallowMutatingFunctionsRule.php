@@ -2,10 +2,11 @@
 
 namespace Hexlet\PHPStanFp\Rules\Functions;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
 use PhpParser\Node\Expr\FuncCall;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 
 class DisallowMutatingFunctionsRule implements Rule
 {
@@ -65,6 +66,10 @@ class DisallowMutatingFunctionsRule implements Rule
             return [];
         }
 
-        return ["The use of function '{$name}' is not allowed as it might be a mutating function"];
+        $errorMessage = "The use of function '{$name}' is not allowed as it might be a mutating function";
+
+        return [
+            RuleErrorBuilder::message($errorMessage)->build()
+        ];
     }
 }

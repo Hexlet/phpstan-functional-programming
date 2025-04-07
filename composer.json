@@ -5,14 +5,14 @@
     "type": "library",
     "require": {
         "php": ">=8.2",
-        "phpstan/phpstan": "^1",
+        "phpstan/phpstan": "^2.0",
         "illuminate/collections": "^12"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-          "Hexlet\\PHPStanFp\\": "src/",
-          "Hexlet\\PHPStanFp\\Tests\\": "tests/"
+            "Hexlet\\PHPStanFp\\": "src/",
+            "Hexlet\\PHPStanFp\\Tests\\": "tests/"
         }
     },
     "extra": {

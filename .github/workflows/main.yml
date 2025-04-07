@@ -12,26 +12,20 @@ jobs:
         php-versions: ['8.1', '8.2', '8.3']
 
     steps:
-        # Check-out repository under GitHub workspace
-        # https://github.com/actions/checkout
       - uses: actions/checkout@v4
-        # Step's name
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          # Specify the PHP version
-          php-version: '8.2'
+          php-version: ${{ matrix.version }}
+
       - name: Install
-        # Install project
         run: make install
+
       - name: Run linter
-        # Run Linter
         run: make lint
-        # Publish code coverage on Code Climate
-        # https://github.com/paambaati/codeclimate-action
+
       - name: Run test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.6.0
-        # Add Code Climate secret key
+        uses: paambaati/codeclimate-action@v9.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
         with:

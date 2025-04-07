@@ -2,10 +2,11 @@
 
 namespace Hexlet\PHPStanFp\Rules\Expression;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
 
 class DisallowUnusedExpressionRule implements Rule
 {
@@ -36,6 +37,8 @@ class DisallowUnusedExpressionRule implements Rule
             return [];
         }
 
-        return ['Enforce that an expression gets used'];
+        return [
+            RuleErrorBuilder::message('Enforce that an expression gets used')->build()
+        ];
     }
 }

@@ -12,7 +12,6 @@ do {
 } while ($a < 3);
 
 for ($i = 0; $i < 2; $i++) {
-
 }
 
 $arr = array(1, 2, 3, 4);
