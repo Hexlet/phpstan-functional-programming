@@ -2,10 +2,12 @@
 
 namespace Hexlet\PHPStanFp\Rules\Functions;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
 use PhpParser\Node\Expr\FuncCall;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowMutatingFunctionsRule implements Rule
 {
@@ -46,9 +48,9 @@ class DisallowMutatingFunctionsRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr\FuncCall $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @param FuncCall $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -61,10 +63,17 @@ class DisallowMutatingFunctionsRule implements Rule
         }
 
         $name = $node->name->getFirst();
+
         if (!in_array($name, $this->mutatingFunctionsNames)) {
             return [];
         }
 
-        return ["The use of function '{$name}' is not allowed as it might be a mutating function"];
+        $errorMessage = "The use of function '{$name}' is not allowed as it might be a mutating function";
+
+        return [
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('phpstanFunctionalProgramming.disallowMutatingFunctions')
+                ->build()
+        ];
     }
 }

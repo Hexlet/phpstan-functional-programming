@@ -2,10 +2,12 @@
 
 namespace Hexlet\PHPStanFp\Rules\Classes;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
 use PhpParser\Node\Stmt\Class_;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowClassesRule implements Rule
 {
@@ -22,15 +24,22 @@ class DisallowClassesRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\Class_ $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @param Class_ $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowClasses) {
             return [];
         }
-        return ['Should not use classes'];
+
+        $errorMessage = 'Should not use classes';
+
+        return [
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('phpstanFunctionalProgramming.disallowClasses')
+                ->build()
+        ];
     }
 }

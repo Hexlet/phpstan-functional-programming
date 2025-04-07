@@ -32,8 +32,20 @@ shuffle($ar2);
 
 sort($ar2);
 
-uasort($ar2);
+uasort($ar2, fn($a, $b) => $a <=> $b);
 
-uksort($ar2);
+uksort($ar2, fn($a, $b) => $a <=> $b);
 
-usort($ar2);
+usort($ar2, fn($a, $b) => $a <=> $b);
+
+// no error
+array_filter($ar1, fn($a) => $a);
+
+// no error
+// but maybe should
+$fn = 'print_r';
+$fn('hello');
+
+// no error but should
+$fn2 = 'array_push';
+$fn2($ar2, 6);

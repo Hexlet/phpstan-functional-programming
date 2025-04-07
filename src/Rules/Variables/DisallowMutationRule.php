@@ -2,9 +2,11 @@
 
 namespace Hexlet\PHPStanFp\Rules\Variables;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 abstract class DisallowMutationRule implements Rule
 {
@@ -16,9 +18,9 @@ abstract class DisallowMutationRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Expr $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @param Node $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -30,24 +32,35 @@ abstract class DisallowMutationRule implements Rule
             return [];
         }
 
-        $errorMessage = 'Should not use of mutating operators';
-
         switch ($node->var->getType()) {
             case 'Expr_ArrayDimFetch':
-                return [$errorMessage];
-
-            case 'Expr_Array':
+                return [
+                    $this->buildError()
+                ];
+            case 'Expr_List':
                 $containsTypedItems = collect($node->var->items)
                     ->map(fn($item) => $item->value->name)
                     ->filter(fn($name) => !is_null($name))
                     ->contains(fn($name) => $scope->hasVariableType($name)->yes());
-                return $containsTypedItems ? [$errorMessage] : [];
+
+                return $containsTypedItems
+                    ? [$this->buildError()]
+                    : [];
 
             case 'Expr_Variable':
-                return $scope->hasVariableType($node->var->name)->yes() ? [$errorMessage] : [];
-
+                return $scope->hasVariableType($node->var->name)->yes()
+                    ? [$this->buildError()]
+                    : [];
             default:
                 return [];
         }
+    }
+    private function buildError(): IdentifierRuleError
+    {
+        $errorMessage = 'Should not use of mutating operators';
+
+        return RuleErrorBuilder::message($errorMessage)
+            ->identifier('phpstanFunctionalProgramming.disallowVariablesMutation')
+            ->build();
     }
 }

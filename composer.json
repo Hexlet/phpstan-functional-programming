@@ -1,17 +1,18 @@
 {
     "name": "hexlet/phpstan-fp",
     "description": "PHPStan rules for functional programming",
+    "version": "3.0.0",
     "type": "library",
     "require": {
-        "php": ">=8.1",
-        "phpstan/phpstan": "^1.10.24",
-        "illuminate/collections": "^10.14.1"
+        "php": ">=8.2",
+        "phpstan/phpstan": "^2.1",
+        "illuminate/collections": "^12"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-          "Hexlet\\PHPStanFp\\": "src/",
-          "Hexlet\\PHPStanFp\\Tests\\": "tests/"
+            "Hexlet\\PHPStanFp\\": "src/",
+            "Hexlet\\PHPStanFp\\Tests\\": "tests/"
         }
     },
     "extra": {
@@ -22,7 +23,7 @@
         }
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5.18",
-        "squizlabs/php_codesniffer": "^3.6.2"
+        "phpunit/phpunit": "^11.5 | ^12.0",
+        "squizlabs/php_codesniffer": "^3.9"
     }
 }

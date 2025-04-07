@@ -2,17 +2,14 @@
 
 class ExampleClass
 {
-
 }
 
 abstract class ExampleAbstractClass
 {
-
 }
 
 final class ExampleFinalClass
 {
-
 }
 
 function example()
@@ -20,7 +17,8 @@ function example()
     // do not cause an error
     $someVar = 'class';
 
-    $anonymous = new class {};
+    $anonymous = new class {
+    };
 }
 
 // do not cause an error

@@ -2,10 +2,12 @@
 
 namespace Hexlet\PHPStanFp\Rules\Exceptions;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
+use PhpParser\Node\Expr\Throw_;
 use PHPStan\Analyser\Scope;
-use PhpParser\Node\Stmt\Throw_;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowThrowRule implements Rule
 {
@@ -22,15 +24,22 @@ class DisallowThrowRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\Throw_ $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @param Throw_ $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowThrow) {
             return [];
         }
-        return ['Should not use throw'];
+
+        $errorMessage = 'Should not use throw';
+
+        return [
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('phpstanFunctionalProgramming.disallowThrow')
+                ->build()
+        ];
     }
 }

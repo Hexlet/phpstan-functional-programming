@@ -2,9 +2,11 @@
 
 namespace Hexlet\PHPStanFp\Rules\Loops;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
 use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 abstract class DisallowLoopsRule implements Rule
 {
@@ -15,13 +17,22 @@ abstract class DisallowLoopsRule implements Rule
         $this->disallowLoops = $disallowLoops;
     }
 
+    /**
+     * @param Node $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
+     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowLoops) {
             return [];
         }
 
-        return ["Should not use loop {$this->getLoopType()}"];
+        return [
+            RuleErrorBuilder::message("Should not use loop {$this->getLoopType()}")
+                ->identifier('phpstanFunctionalProgramming.disallowLoops')
+                ->build()
+        ];
     }
 
     abstract protected function getLoopType(): string;

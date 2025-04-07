@@ -17,7 +17,8 @@ $a = 2 + 5;
 
 $a++;
 
-function example() {
+function example()
+{
     9 + 7;
 
     print_r();
@@ -30,5 +31,4 @@ if ($a > 0) {
 print_r('some text');
 
 for ($i = 0; 2 + 5; $i++) {
-    
 }

@@ -2,10 +2,12 @@
 
 namespace Hexlet\PHPStanFp\Rules\Expression;
 
-use PHPStan\Rules\Rule;
 use PhpParser\Node;
-use PHPStan\Analyser\Scope;
 use PhpParser\Node\Stmt\Expression;
+use PHPStan\Analyser\Scope;
+use PHPStan\Rules\Rule;
+use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 class DisallowUnusedExpressionRule implements Rule
 {
@@ -22,9 +24,9 @@ class DisallowUnusedExpressionRule implements Rule
     }
 
     /**
-     * @param \PhpParser\Node\Stmt\Expression $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
+     * @param Expression $node
+     * @param Scope $scope
+     * @return IdentifierRuleError[]
      */
     public function processNode(Node $node, Scope $scope): array
     {
@@ -36,6 +38,10 @@ class DisallowUnusedExpressionRule implements Rule
             return [];
         }
 
-        return ['Enforce that an expression gets used'];
+        return [
+            RuleErrorBuilder::message('Enforce that an expression gets used')
+                ->identifier('phpstanFunctionalProgramming.disallowUnusedExpression')
+                ->build()
+        ];
     }
 }

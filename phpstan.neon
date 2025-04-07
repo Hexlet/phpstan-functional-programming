@@ -3,9 +3,5 @@ parameters:
   paths:
     - src
     - tests
-
   excludePaths:
     - tests/*/data/*
-
-  checkGenericClassInNonGenericObjectType: false
-  reportUnmatchedIgnoredErrors: false
