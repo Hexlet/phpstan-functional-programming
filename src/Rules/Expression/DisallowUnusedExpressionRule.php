@@ -38,7 +38,7 @@ class DisallowUnusedExpressionRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message('Enforce that an expression gets used')->build()
+            RuleErrorBuilder::message('Enforce that an expression gets used')->identifier('PHPStanFp.disallowUnusedExpression')->build()
         ];
     }
 }

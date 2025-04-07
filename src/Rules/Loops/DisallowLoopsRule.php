@@ -23,7 +23,7 @@ abstract class DisallowLoopsRule implements Rule
         }
 
         return [
-            RuleErrorBuilder::message("Should not use loop {$this->getLoopType()}")->build()
+            RuleErrorBuilder::message("Should not use loop {$this->getLoopType()}")->identifier('PHPStanFp.disallowLoops')->build()
         ];
     }
 

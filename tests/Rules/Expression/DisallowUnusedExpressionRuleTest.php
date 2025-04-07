@@ -33,19 +33,19 @@ class DisallowUnusedExpressionRuleTest extends RuleTestCase
             ],
             [
                 'Enforce that an expression gets used',
-                21,
+                22,
             ],
             [
                 'Enforce that an expression gets used',
-                23,
+                24,
             ],
             [
                 'Enforce that an expression gets used',
-                27,
+                28,
             ],
             [
                 'Enforce that an expression gets used',
-                30,
+                31,
             ],
         ]);
     }

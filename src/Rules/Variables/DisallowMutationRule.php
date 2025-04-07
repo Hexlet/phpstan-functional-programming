@@ -6,6 +6,7 @@ use PhpParser\Node;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
+use PHPStan\Rules\IdentifierRuleError;
 
 abstract class DisallowMutationRule implements Rule
 {
@@ -16,11 +17,6 @@ abstract class DisallowMutationRule implements Rule
         $this->disallowVariablesMutation = $disallowVariablesMutation;
     }
 
-    /**
-     * @param \PhpParser\Node\Expr $node
-     * @param \PHPStan\Analyser\Scope $scope
-     * @return string[]
-     */
     public function processNode(Node $node, Scope $scope): array
     {
         if (!$this->disallowVariablesMutation) {
@@ -31,12 +27,10 @@ abstract class DisallowMutationRule implements Rule
             return [];
         }
 
-        $errorMessage = 'Should not use of mutating operators';
-
         switch ($node->var->getType()) {
             case 'Expr_ArrayDimFetch':
                 return [
-                    RuleErrorBuilder::message($errorMessage)->build()
+                    $this->buildError()
                 ];
             case 'Expr_List':
                 $containsTypedItems = collect($node->var->items)
@@ -44,14 +38,24 @@ abstract class DisallowMutationRule implements Rule
                     ->filter(fn($name) => !is_null($name))
                     ->contains(fn($name) => $scope->hasVariableType($name)->yes());
 
-                return $containsTypedItems ? [RuleErrorBuilder::message($errorMessage)->build()] : [];
+                return $containsTypedItems
+                    ? [$this->buildError()]
+                    : [];
 
             case 'Expr_Variable':
                 return $scope->hasVariableType($node->var->name)->yes()
-                    ? [RuleErrorBuilder::message($errorMessage)->build()]
+                    ? [$this->buildError()]
                     : [];
             default:
                 return [];
         }
+    }
+    private function buildError(): IdentifierRuleError
+    {
+        $errorMessage = 'Should not use of mutating operators';
+
+        return RuleErrorBuilder::message($errorMessage)
+            ->identifier('PHPStanFp.disallowVariablesMutation')
+            ->build();
     }
 }

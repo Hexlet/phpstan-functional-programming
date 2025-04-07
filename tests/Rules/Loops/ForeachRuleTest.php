@@ -21,7 +21,7 @@ class ForeachRuleTest extends RuleTestCase
         $this->analyse([__DIR__ . '/data/loops.php'], [
             [
                 'Should not use loop foreach',
-                19,
+                18,
             ],
         ]);
     }

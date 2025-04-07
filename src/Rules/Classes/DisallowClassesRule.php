@@ -31,7 +31,9 @@ class DisallowClassesRule implements Rule
         $errorMessage = 'Should not use classes';
 
         return [
-            RuleErrorBuilder::message($errorMessage)->build()
+            RuleErrorBuilder::message($errorMessage)
+                ->identifier('PHPStanFp.disallowClasses')
+                ->build()
         ];
     }
 }

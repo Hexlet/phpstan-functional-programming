@@ -31,7 +31,7 @@ class DisallowThrowRule implements Rule
         $errorMessage = 'Should not use throw';
 
         return [
-            RuleErrorBuilder::message($errorMessage)->build()
+            RuleErrorBuilder::message($errorMessage)->identifier('PHPStanFp.disallowThrow')->build()
         ];
     }
 }

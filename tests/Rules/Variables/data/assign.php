@@ -13,8 +13,7 @@ $link_a = 18;
 
 $a = 15;
 
-function ds($arg1, &$arg2)
-{
+function ds($arg1, &$arg2) {
     $arg1 = 2;
     $arg2 = 'text';
 
