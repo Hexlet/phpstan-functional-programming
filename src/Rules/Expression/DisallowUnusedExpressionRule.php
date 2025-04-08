@@ -4,6 +4,7 @@ namespace Hexlet\PHPStanFp\Rules\Expression;
 
 use PhpParser\Node;
 use PhpParser\Node\Stmt\Expression;
+use PhpParser\Node\Expr\Throw_;
 use PHPStan\Analyser\Scope;
 use PHPStan\Rules\Rule;
 use PHPStan\Rules\RuleErrorBuilder;
@@ -35,6 +36,10 @@ class DisallowUnusedExpressionRule implements Rule
         }
 
         if (isset($node->expr->var)) {
+            return [];
+        }
+
+        if ($node->expr instanceof Throw_) {
             return [];
         }
 

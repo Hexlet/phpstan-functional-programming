@@ -32,3 +32,10 @@ print_r('some text');
 
 for ($i = 0; 2 + 5; $i++) {
 }
+
+function getFileData(string $filepath): void
+{
+    if (!file_exists($filepath)) {
+        throw new \Exception("File '$filepath' does not exist");
+    }
+}
