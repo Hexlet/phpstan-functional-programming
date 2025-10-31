@@ -1,0 +1,35 @@
+---
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    labels: [dependencies, automated, actions]
+    groups:
+      actions-minor-patch:
+        update-types: [minor, patch]
+      actions-major:
+        update-types: [major]
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+    labels: [dependencies, automated, dev]
+    allow:
+      - dependency-type: development
+    groups:
+      composer-dev-minor-patch:
+        update-types: [minor, patch]
+      composer-dev-major:
+        update-types: [major]
+  - package-ecosystem: composer
+    directory: /
+    schedule:
+      interval: weekly
+    labels: [dependencies, automated, prod]
+    allow:
+      - dependency-type: production
+    groups:
+      composer-runtime-minor-patch:
+        update-types: [minor, patch]
